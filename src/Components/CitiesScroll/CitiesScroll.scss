@@ -1,0 +1,39 @@
+.cities-scroll-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .cities-scroll {
+    display: flex;
+    overflow-x: scroll;
+    gap: 20px;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+  }
+  
+  .my-card {
+    flex-shrink: 0; // Prevents the card from shrinking when the container is smaller
+    width: 300px; // Set card width for consistency
+  }
+  
+  .scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1f97c2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .scroll-btn.left {
+    left: 0;
+  }
+  
+  .scroll-btn.right {
+    right: 0;
+  }
+  

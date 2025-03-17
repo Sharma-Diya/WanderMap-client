@@ -1,0 +1,99 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/fonts" as *;
+@use "react-responsive-carousel/lib/styles/carousel.min.css" as *;
+
+.welcome {
+    color: white;
+    font-family: "Outfit-Light", sans-serif;
+    position: relative; /* Ensures that child elements are positioned relative to this container */
+  
+    &-logo {
+      position: absolute;
+      left: 38rem;
+      top: -13rem;
+      height: 50rem;
+      width: 40rem;
+      z-index: 2; /* Keep logo above the overlay */
+    }
+      &-carousel .img{
+          width: 100%;
+          height: auto; 
+          object-fit: cover;
+          display: block; 
+        }
+      
+    
+    &-bg {
+        width: 100%; 
+        height: auto; 
+        object-fit: contain; 
+    }
+
+    &__heading {
+        position: absolute;
+        z-index: 2; 
+        text-align: left;
+        top: 20rem;
+        left:3rem;
+        bottom:0;
+      
+        &-top {
+          font-size: 4rem;
+          font-weight: bold;
+        }
+      
+        &-bottom {
+          font-size: 1.5rem;
+          margin-top: 1rem;
+          width: 50%;
+        }
+      }
+  }
+  
+  .welcome-carousel {
+    width: 100%;
+    // height: 400px;
+  
+    .carousel .slide {
+      // Customizing slide style
+      border-radius: 10px;
+    }
+  
+    .carousel .thumbs-wrapper {
+      display: none; // Hide thumbnails if needed
+    }
+  }
+  
+  
+  
+  
+.saying {
+  display: flex;
+  align-items: center;  /* Vertically center the content */
+  justify-content: space-between; /* Place content on opposite sides */
+  padding: 20px;
+}
+
+.saying__image {
+  flex: 1;  /* Take up equal space as the text */
+  img {
+    width: 100%;  /* Make sure the image fills the container */
+    height: auto;
+    border-radius: 8px; /* Optional: for rounded corners */
+  }
+}
+
+.saying__text {
+  flex: 1;  /* Take up equal space as the image */
+  text-align: right; /* Align text to the right */
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #555; /* Optional: change the color */
+  padding: 0 20px; /* Optional: add padding to the text */
+}
+
+blockquote {
+  margin: 0;
+}
