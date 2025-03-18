@@ -1,9 +1,9 @@
 
 import { useState } from "react";
-import img1 from "../../assets/images/1.jpg";
-import img2 from "../../assets/images/2.jpg";
-import img3 from "../../assets/images/3.jpg";
-import img4 from "../../assets/images/4.jpg";
+// import img1 from "../../assets/images/1.jpg";
+// import img2 from "../../assets/images/2.jpg";
+// import img3 from "../../assets/images/3.jpg";
+// import img4 from "../../assets/images/4.jpg";
 
 import { useEffect } from "react";
 import "./WelcomePage.scss";
@@ -11,10 +11,11 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import CitiesList from "../../Components/CitiesList/CitiesList.jsx";
 import BasicCarousel from "../../Components/CitiesCarousel/CitiesCarousel.jsx";
+import UnsplashImages from "../../Components/UnsplashImages/UnsplashImages.jsx";
+import AttractionsList from "../../Components/AttractionsList/AttractionsList.jsx";
 
 
-
-function Welcome({ setPageName, cities }) {
+function Welcome({ setPageName, cities, attractions }) {
   
   const [filteredCities, setFilteredCities] = useState(cities);
 
@@ -26,9 +27,9 @@ function Welcome({ setPageName, cities }) {
   return (
     <section className="banner">
         <Navbar cities={cities} setFilteredCities={setFilteredCities} />
-     <BasicCarousel/>
+     {/* <UnsplashImages/> */}
       
-      <img className="welcome-bg" src= {img3}/>
+      {/* <img className="welcome-bg" src= {img3}/> */}
 
       <div className="banner__heading">
         <h1 className="banner__heading-top">Plan Your Perfect Day </h1>
@@ -43,15 +44,18 @@ function Welcome({ setPageName, cities }) {
         <CitiesList cities={filteredCities}/>
         <section className="saying">
           <div className="saying__image">
-            <img src="your-image-url.jpg" alt="Travel" />
+            {/* <UnsplashImages/> */}
           </div>
           <div className="saying__text">
             <blockquote>
-              "Travel is the only thing you buy that makes you richer." –
-              Anonymous
+            "The road is there, it will always be there. You just have to decide when to take it." – Cheryl Strayed
             </blockquote>
           </div>
         </section>
+
+        <div className="attractions">
+        <AttractionsList attractions={attractions} />
+        </div>
       </main>
       <Footer />
     </section>

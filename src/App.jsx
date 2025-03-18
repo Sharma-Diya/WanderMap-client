@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
