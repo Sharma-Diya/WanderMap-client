@@ -1,4 +1,5 @@
 // import { Carousel } from "react-responsive-carousel";
+import { useState } from "react";
 import img1 from "../../assets/images/1.jpg";
 import img2 from "../../assets/images/2.jpg";
 import img3 from "../../assets/images/3.jpg";
@@ -13,7 +14,10 @@ import BasicCarousel from "../../Components/CitiesCarousel/CitiesCarousel.jsx";
 
 
 
-function Welcome({ setPageName }) {
+function Welcome({ setPageName, cities }) {
+  
+  const [filteredCities, setFilteredCities] = useState(cities);
+
   useEffect(() => {
     setPageName("Welcome");
   }, []);
@@ -21,7 +25,7 @@ function Welcome({ setPageName }) {
 
   return (
     <section className="welcome">
-      <Navbar />
+        <Navbar cities={cities} setFilteredCities={setFilteredCities} />
      {/* <BasicCarousel/> */}
       <img className="welcome-bg" src= {img3}/>
 
@@ -35,7 +39,7 @@ function Welcome({ setPageName }) {
       </div>
 
       <main className="cities-list">
-        <CitiesList />
+        <CitiesList cities={filteredCities}/>
         <section className="saying">
           <div className="saying__image">
             <img src="your-image-url.jpg" alt="Travel" />

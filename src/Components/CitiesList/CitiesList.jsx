@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "../Navbar/Navbar";  // Import Navbar
 import CitiesScroll from "../CitiesScroll/CitiesScroll";
 import Search from "../Search/Search";  // Import Search
 import "./CitiesList.scss";
@@ -40,7 +39,7 @@ function CitiesList() {
   return (
     <div className="cities">
       <h3 className="cities-heading"> Popular Cities</h3>
-      {/* <Navbar cities={cities} setFilteredCities={setFilteredCities} /> */}
+      <Search cities={cities} setFilteredCities={setFilteredCities} />
       <div className="cities-list">
         <CitiesScroll cities={filteredCities} />
       </div>
