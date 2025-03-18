@@ -8,7 +8,7 @@ const LoginModal = ({ isOpen, onClose }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         <button className="modal-close" onClick={onClose}>×</button>
-        <Login />
+        <Login isModal={true} />
       </div>
     </div>
   );

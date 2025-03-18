@@ -10,8 +10,9 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-src/config/Firebase.jsx
+src/Components/config/Firebase.jsx
 *.local
+.env
 
 # Editor directories and files
 .vscode/*

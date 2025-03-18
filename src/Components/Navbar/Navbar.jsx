@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import "./navbar.scss";
 import Search from "../Search/Search.jsx";
 import LoginModal from "..//Auth/Login/LoginModal.jsx";
-import Register from "../Auth/Register/Register.jsx";
+// import Register from "../Auth/Register/Register.jsx";
 import { auth } from "../config/Firebase.jsx";  // Import Firebase auth
 import { onAuthStateChanged, signOut } from "firebase/auth"; // Import auth functions
+// import logo from "../../assets/images/roadLogo.png";
 
 function Navbar({ cities, setFilteredCities }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,7 +54,9 @@ function Navbar({ cities, setFilteredCities }) {
       <div className="header__content">
         <Link to="/" className="header__content__logo">
           WanderMap
+          {/* <img src={logo}/> */}
         </Link>
+
         <nav className={`header__content__nav ${menuOpen ? "isMenu" : ""}`}>
           <ul>
             <Search cities={cities} setFilteredCities={setFilteredCities} />

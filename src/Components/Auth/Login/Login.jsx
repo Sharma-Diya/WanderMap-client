@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import img from "../../../assets/images/image.png";
 
-const Login = () => {
+const Login = ( {isModal = false}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -34,8 +34,8 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-    <div className="login-content">
+    <div className={`login-container ${isModal ? "modal-style" : "page-style"}`}>
+      <div className={`login-content ${isModal ? "modal-login-content" : "page-login-content"}`}>
 
       <img className="login-img" src={img} alt="Login" />
       <h2 className="login-title">Log in</h2>
