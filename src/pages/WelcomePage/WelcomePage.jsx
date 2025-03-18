@@ -1,8 +1,8 @@
 // import { Carousel } from "react-responsive-carousel";
-import img1 from "../../assets/images/1.jpg";
-import img2 from "../../assets/images/2.jpg";
-import img3 from "../../assets/images/3.jpg";
-import img4 from "../../assets/images/4.jpg";
+// import img1 from "../../assets/images/1.jpg";
+// import img2 from "../../assets/images/2.jpg";
+// import img3 from "../../assets/images/3.jpg";
+// import img4 from "../../assets/images/4.jpg";
 
 import { useEffect } from "react";
 import "./WelcomePage.scss";
@@ -17,17 +17,17 @@ function Welcome({ setPageName }) {
   useEffect(() => {
     setPageName("Welcome");
   }, []);
-  console.log(img1, img2, img3, img4);
+  // console.log(img1, img2, img3, img4);
 
   return (
-    <section className="welcome">
+    <section className="banner">
       <Navbar />
-     {/* <BasicCarousel/> */}
-      <img className="welcome-bg" src= {img3}/>
+     <BasicCarousel/>
+      {/* <img className="banner-bg" src= {img3}/> */}
 
-      <div className="welcome__heading">
-        <h1 className="welcome__heading-top">Plan Your Perfect Day </h1>
-        <h3 className="welcome__heading-bottom">
+      <div className="banner__heading">
+        <h1 className="banner__heading-top">Plan Your Perfect Day </h1>
+        <h3 className="banner__heading-bottom">
           Canada awaits with breathtaking landscapes, vibrant cities, and
           unforgettable adventures. Pack your bags and get ready for an
           experience of a lifetime!
