@@ -1,4 +1,4 @@
-// import { Carousel } from "react-responsive-carousel";
+
 import { useState } from "react";
 import img1 from "../../assets/images/1.jpg";
 import img2 from "../../assets/images/2.jpg";
@@ -21,17 +21,18 @@ function Welcome({ setPageName, cities }) {
   useEffect(() => {
     setPageName("Welcome");
   }, []);
-  console.log(img1, img2, img3, img4);
+  // console.log(img1, img2, img3, img4);
 
   return (
-    <section className="welcome">
+    <section className="banner">
         <Navbar cities={cities} setFilteredCities={setFilteredCities} />
-     {/* <BasicCarousel/> */}
+     <BasicCarousel/>
+      
       <img className="welcome-bg" src= {img3}/>
 
-      <div className="welcome__heading">
-        <h1 className="welcome__heading-top">Plan Your Perfect Day </h1>
-        <h3 className="welcome__heading-bottom">
+      <div className="banner__heading">
+        <h1 className="banner__heading-top">Plan Your Perfect Day </h1>
+        <h3 className="banner__heading-bottom">
           Canada awaits with breathtaking landscapes, vibrant cities, and
           unforgettable adventures. Pack your bags and get ready for an
           experience of a lifetime!
