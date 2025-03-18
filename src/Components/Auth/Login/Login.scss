@@ -1,0 +1,123 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/global" as *;
+@use "../../../styles/partials/fonts" as *;
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+
+}
+.page-style {
+  min-height: 100vh;
+//  max-width:800px;
+}
+
+.modal-style {
+  background-color: transparent;
+}
+
+.login-content {
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+    background-color: $alt-background-color;
+
+}
+
+    .login-img{
+        max-width:300px;
+       margin: 0 2rem;
+    }
+
+    .login-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 24px;
+      text-align: center;
+      color: $background;
+
+    }
+    
+    .error-message {
+      margin-bottom: 16px;
+      padding: 12px;
+      background-color: #fee2e2;
+      color: #b91c1c;
+      border-radius: 6px;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+      
+      &:last-of-type {
+        margin-bottom: 24px;
+      }
+      
+      .form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #374151;
+      }
+      
+      .form-input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        
+        &:focus {
+          outline: none;
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+      }
+    }
+    
+    .login-button {
+      width: 100%;
+      background-color: $background;
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: #649e5d;
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+      }
+    }
+  
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    
+      a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    
+        &:hover {
+          text-decoration: underline;
+          color: #0056b3;
+        }
+      }
+    }
+    

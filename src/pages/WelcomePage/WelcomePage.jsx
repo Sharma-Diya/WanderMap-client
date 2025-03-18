@@ -1,8 +1,9 @@
-// import { Carousel } from "react-responsive-carousel";
-// import img1 from "../../assets/images/1.jpg";
-// import img2 from "../../assets/images/2.jpg";
-// import img3 from "../../assets/images/3.jpg";
-// import img4 from "../../assets/images/4.jpg";
+
+import { useState } from "react";
+import img1 from "../../assets/images/1.jpg";
+import img2 from "../../assets/images/2.jpg";
+import img3 from "../../assets/images/3.jpg";
+import img4 from "../../assets/images/4.jpg";
 
 import { useEffect } from "react";
 import "./WelcomePage.scss";
@@ -13,7 +14,10 @@ import BasicCarousel from "../../Components/CitiesCarousel/CitiesCarousel.jsx";
 
 
 
-function Welcome({ setPageName }) {
+function Welcome({ setPageName, cities }) {
+  
+  const [filteredCities, setFilteredCities] = useState(cities);
+
   useEffect(() => {
     setPageName("Welcome");
   }, []);
@@ -21,9 +25,10 @@ function Welcome({ setPageName }) {
 
   return (
     <section className="banner">
-      <Navbar />
+        <Navbar cities={cities} setFilteredCities={setFilteredCities} />
      <BasicCarousel/>
-      {/* <img className="banner-bg" src= {img3}/> */}
+      
+      <img className="welcome-bg" src= {img3}/>
 
       <div className="banner__heading">
         <h1 className="banner__heading-top">Plan Your Perfect Day </h1>
@@ -35,7 +40,7 @@ function Welcome({ setPageName }) {
       </div>
 
       <main className="cities-list">
-        <CitiesList />
+        <CitiesList cities={filteredCities}/>
         <section className="saying">
           <div className="saying__image">
             <img src="your-image-url.jpg" alt="Travel" />
