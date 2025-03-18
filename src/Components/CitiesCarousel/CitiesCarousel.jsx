@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Importing arrow icons from react-icons
 import "./CitiesCarousel.scss"; // Add styling for arrows
 
-const images = [
-  "/images/image.jpg",
-  "/images/image1.jpg",
-  "/images/image2.jpg",
-  "/images/image4.jpg",
-];
+import img1 from "/src/assets/images/image.jpg";
+import img2 from "/src/assets/images/image1.jpg";
+import img3 from "/src/assets/images/image2.jpg";
+import img4 from "/src/assets/images/image4.jpg";
+
+const images = [img1, img2, img3, img4];
 
 function BasicCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
