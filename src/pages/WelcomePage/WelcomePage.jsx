@@ -14,6 +14,7 @@ import BasicCarousel from "../../Components/CitiesCarousel/CitiesCarousel.jsx";
 
 
 function Welcome({ setPageName }) {
+  
   useEffect(() => {
     setPageName("Welcome");
   }, []);
