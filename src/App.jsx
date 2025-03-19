@@ -22,7 +22,7 @@ function App() {
       <Route path="/" element={<WelcomePage setPageName={setPageName}/>} />
       <Route path ="/cities" element = {<HomePage setPageName={setPageName}/>} />
       <Route path ="/cities/:id" element = {<CityPage setPageName={setPageName}/>} />
-      <Route path = "/cities/:id/attractions" element = {<AttractionsPage setPageName={setPageName}/>}/>
+      <Route path = "/attractions" element = {<AttractionsPage setPageName={setPageName}/>}/>
       <Route path = "/attractions/:id" element = {<DetailsPage setPageName = {setPageName}/> }/>
       <Route path = "/profile" element = {<ProfilePage setPageName= {setPageName}/>}/>
       <Route path="/register" element={<Register />} />
