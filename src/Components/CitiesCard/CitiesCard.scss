@@ -38,4 +38,12 @@
       transition: all 0.3s ease;
     }
   }
-  
+  /* In your CitiesCard.scss */
+.my-card {
+  position: relative;
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
+.my-card img {
+  z-index: 10; /* Ensure image is clickable above other content */
+}
