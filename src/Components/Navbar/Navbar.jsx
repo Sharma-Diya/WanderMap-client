@@ -8,7 +8,7 @@ import LoginModal from "..//Auth/Login/LoginModal.jsx";
 // import Register from "../Auth/Register/Register.jsx";
 import { auth } from "../config/Firebase.jsx";  // Import Firebase auth
 import { onAuthStateChanged, signOut } from "firebase/auth"; // Import auth functions
-// import logo from "../../assets/images/roadLogo.png";
+import logo from "../../assets/images/logo.png";
 
 function Navbar({ cities, setFilteredCities }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,10 +52,12 @@ function Navbar({ cities, setFilteredCities }) {
   return (
     <header className="header">
       <div className="header__content">
+        <div className="header__logo">
         <Link to="/" className="header__content__logo">
-          WanderMap
-          {/* <img src={logo}/> */}
+        <img src={logo} className="header__content__img"/>
+         <h1>WanderMap</h1> 
         </Link>
+        </div>
 
         <nav className={`header__content__nav ${menuOpen ? "isMenu" : ""}`}>
           <ul>
