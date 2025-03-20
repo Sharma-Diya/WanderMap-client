@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import Axios from "axios";
-import AttractionsCard from "../AttractionsCard/AttractionsCard.jsx";
+import AttractionsCard from "../AttractionsCard/AttractionsCard.jsx"; // Assuming you're importing AttractionsCard component
 import "./AttractionsList.scss";
 
 function AttractionsList() {
   const [attractions, setAttractions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const scrollContainerRef = useRef(null);
 
   // Fetch attractions data from API when component mounts
   useEffect(() => {
@@ -26,12 +24,14 @@ function AttractionsList() {
     fetchAttractions();
   }, []);
 
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 300; // Number of pixels to scroll
-      scrollContainerRef.current.scrollLeft += direction * scrollAmount;
-    }
-  };
+  const scrollContainerRef = useRef(null);
+  
+    const scroll = (direction) => {
+      if (scrollContainerRef.current) {
+        const scrollAmount = 300; // Number of pixels to scroll
+        scrollContainerRef.current.scrollLeft += direction * scrollAmount;
+      }
+    };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -47,7 +47,7 @@ function AttractionsList() {
       <button className="scroll-btn left" onClick={() => scroll(-1)}>
         &lt;
       </button>
-      <div className="attractions-cards" ref={scrollContainerRef}>
+      <div className="attractions-cards">
         {attractions.map((attraction) => (
           <AttractionsCard key={attraction.id} attraction={attraction} />
         ))}
@@ -60,3 +60,4 @@ function AttractionsList() {
 }
 
 export default AttractionsList;
+

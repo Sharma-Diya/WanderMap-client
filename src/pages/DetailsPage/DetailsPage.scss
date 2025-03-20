@@ -2,8 +2,10 @@
 
 .details {
 
+    padding:0 5rem;
+
   .city-details {
-    margin: 30px;
+    margin: 45px;
     // max-width: 800px;
     // width: 90%;
     background-color: white;
@@ -47,14 +49,16 @@
   }
   
   .attractions-section {
-    margin: 30px;
-    padding: 1.5rem;
+    // margin: 30px;
+    // padding: 1.5rem;
     // width: 90%;
     // max-width: 800px;
   
     &__title {
       margin-bottom: 15px;
       text-align: left;
+    margin: 10px 40px;
+
     }
   }
   
@@ -62,7 +66,7 @@
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 50px;
     padding-bottom: 1rem;
     justify-content: space-around;
   }
@@ -79,8 +83,7 @@
     justify-content: space-around;
   
     &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0, 0.1);
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
   

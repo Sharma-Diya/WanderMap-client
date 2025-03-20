@@ -12,12 +12,17 @@ import Details from "./pages/DetailsPage/DetailsPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import Register from "./Components/Auth/Register/Register.jsx";
 import Login from "./Components/Auth/Login/Login.jsx";
+import Navbar from "./Components/Navbar/Navbar.jsx";
+import Footer from "./Components/Footer/Footer.jsx";
 
-function App() {
+function App({cities}) {
   const [pageName, setPageName] = useState();
 
+    const [filteredCities, setFilteredCities] = useState(cities);
+  
   return (
     <BrowserRouter>
+           <Navbar cities={cities} setFilteredCities={setFilteredCities} />
       <Routes>
       <Route path="/" element={<WelcomePage setPageName={setPageName}/>} />
       <Route path ="/cities" element = {<HomePage setPageName={setPageName}/>} />
@@ -27,8 +32,8 @@ function App() {
       <Route path = "/profile" element = {<ProfilePage setPageName= {setPageName}/>}/>
       <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
