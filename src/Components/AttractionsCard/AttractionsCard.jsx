@@ -1,35 +1,26 @@
 import { useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
-// import "./AttractionsCard.scss";
+import { Button } from "react-bootstrap";
+import "./AttractionsCard.scss";
 
 function AttractionsCard({ attraction }) {
-  // Destructure the props for easier access
-  const { name, description, address, category, city_name } = attraction;
+  const { name, description, address, category, city_name, images } = attraction;
+  
 
   return (
-    <Card className="my-card">
-      {/* Check if there's an image URL and display the image */}
-      {/* Assuming image_url is part of the attraction data */}
-      {/* You can replace it with actual image URL if needed */}
-      <Card.Img 
-        variant="top" 
-        src={`https://via.placeholder.com/400x200?text=${name}`} // Placeholder image URL
-        alt={`${name} image`} 
-      />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          {category} | {city_name}
-        </Card.Subtitle>
-        {/* <Card.Text>
-          {description}
-        </Card.Text>
-        <Card.Text>
-          <strong>Address:</strong> {address}
-        </Card.Text> */}
-        <Button>View More</Button>
-      </Card.Body>
-    </Card>
+    <div className="attraction-box">
+      {/* Check if images exists and has items before trying to access */}
+      {images && images.length > 0 ? (
+        <img
+          className="attraction-box__image"
+          src={images[0].url}
+          alt={name}
+        />
+      ) : (
+        <div className="attraction-box__placeholder">No Image Available</div>
+      )}
+      <h2 className="attraction-box__name">{name}</h2>
+      <p className="attraction-box__category">Category: {category}</p>
+    </div>
   );
 }
 

@@ -3,7 +3,7 @@ import CitiesCard from "../CitiesCard/CitiesCard.jsx";
 
 import "./CitiesScroll.scss";
 
-const CitiesScroll = ({ cities }) => {
+const CitiesScroll = ({ cities, onCityClick }) => {
   const scrollContainerRef = useRef(null);
 
   const scroll = (direction) => {
@@ -20,7 +20,10 @@ const CitiesScroll = ({ cities }) => {
       </button>
       <div className="cities-scroll" ref={scrollContainerRef}>
         {cities.map((city) => (
-          <CitiesCard key={city.id} city={city} />
+          
+          <CitiesCard key={city.id} 
+          onClick={() => onCityClick(city.id)} 
+          city={city} />
         ))}
       </div>
       <button className="scroll-btn right" onClick={() => scroll(1)}>

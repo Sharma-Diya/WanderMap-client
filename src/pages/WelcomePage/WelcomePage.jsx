@@ -26,7 +26,7 @@ function Welcome({ setPageName, cities, attractions }) {
 
   return (
     <section className="banner">
-        <Navbar cities={cities} setFilteredCities={setFilteredCities} />
+        {/* <Navbar cities={cities} setFilteredCities={setFilteredCities} /> */}
      {/* <UnsplashImages/> */}
       
       {/* <img className="welcome-bg" src= {img3}/> */}
@@ -57,7 +57,7 @@ function Welcome({ setPageName, cities, attractions }) {
         <AttractionsList attractions={attractions} />
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 }
