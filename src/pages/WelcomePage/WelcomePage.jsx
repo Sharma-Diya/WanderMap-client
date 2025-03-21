@@ -1,9 +1,10 @@
 
 import { useState } from "react";
-// import img1 from "../../assets/images/1.jpg";
+import img1 from "../../assets/images/image1.jpg";
 // import img2 from "../../assets/images/2.jpg";
 // import img3 from "../../assets/images/3.jpg";
-// import img4 from "../../assets/images/4.jpg";
+import img from "../../assets/images/road.jpg";
+import video from "../../assets/images/video.mp4";
 
 import { useEffect } from "react";
 import "./WelcomePage.scss";
@@ -29,7 +30,7 @@ function Welcome({ setPageName, cities, attractions }) {
         {/* <Navbar cities={cities} setFilteredCities={setFilteredCities} /> */}
      {/* <UnsplashImages/> */}
       
-      {/* <img className="welcome-bg" src= {img3}/> */}
+      <img className="welcome-bg" src= {img}/>
 
       <div className="banner__heading">
         <h1 className="banner__heading-top">Plan Your Perfect Day </h1>
@@ -40,16 +41,31 @@ function Welcome({ setPageName, cities, attractions }) {
         </h3>
       </div>
 
-      <main className="cities-list">
+      <main className="main-content">
+
+        <div className="cities-list__container">
         <CitiesList cities={filteredCities}/>
+        </div>
+
         <section className="saying">
           <div className="saying__image">
             {/* <UnsplashImages/> */}
+      {/* <img className="welcome-bg" src= {img1}/> */}
+      <video className="welcome-video" autoPlay loop muted playsInline poster={img}> {/* Using the image as a poster */}
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
           </div>
           <div className="saying__text">
-            <blockquote>
-            "The road is there, it will always be there. You just have to decide when to take it." – Cheryl Strayed
-            </blockquote>
+          <blockquote>
+      "The journey of a thousand miles begins with a single step, and the journey of a thousand miles on a road trip begins with a packed car and a map." - Lao Tzu
+    </blockquote>
+    <p className="author-info">Lao Tzu, an ancient Chinese philosopher.</p>
+    <p>At WanderMap, we believe that every grand adventure, especially a Canadian road trip, begins with the simple decision to start planning and pack your essentials.</p>
+    <p><a href="https://www.lonelyplanet.com/articles/best-road-trips-scenic-drives-canada" className="explore-link">Explore Canadian Road Trip Ideas</a></p>
+    {/* Or a quick tip: */}
+    {/* <p className="travel-tip">Quick Tip: Always pack a first-aid kit for your road trips!</p> */}
           </div>
         </section>
 

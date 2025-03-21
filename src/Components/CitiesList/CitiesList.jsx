@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CitiesScroll from "../CitiesScroll/CitiesScroll";
+// import CitiesScroll from "../CitiesScroll/CitiesScroll";
 import Search from "../Search/Search";  // Import Search
 import "./CitiesList.scss";
+import CitiesCardSlider from "../CitiesSlider/CitiesSlider";
 
 function CitiesList() {
   const [cities, setCities] = useState([]);
@@ -46,9 +47,12 @@ function CitiesList() {
   return (
     <div className="cities">
       <h3 className="cities-heading">Popular Cities</h3>
-      <Search cities={cities} setFilteredCities={setFilteredCities} />
+      <Search
+  cities={cities}
+  setFilteredResults={(data) => setFilteredCities(data.cities)} // 🔹 Ensure this function is passed
+/>
       <div className="cities-list">
-        <CitiesScroll cities={filteredCities} onCityClick={handleCityClick} />
+        <CitiesCardSlider cities={filteredCities} onCityClick={handleCityClick} />
       </div>
     </div>
   );

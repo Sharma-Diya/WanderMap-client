@@ -1,0 +1,82 @@
+$primary-color: #333;
+$secondary-color: #666;
+$shadow-light: rgba(0, 0, 0, 0.15);
+$shadow-hover: rgba(0, 0, 0, 0.2);
+$arrow-bg: rgba(255, 255, 255, 0.8);
+
+#main-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Adjust as needed (e.g., 80%, 1200px, etc.) */
+    max-width: 1200px; /* Optional: Prevents it from getting too wide */
+    margin: 0 auto; /* Centers it if needed */
+}
+
+
+.cities-card-slider-container {
+  margin: 2rem 0;
+  padding: 0 1rem;
+  
+  :global {
+    .slider-card {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px $shadow-light;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 8px 20px $shadow-hover;
+      }
+      
+      .slider-card-image {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+      }
+      
+      .slider-card-title, .slider-card-description {
+        padding: 0 15px;
+      }
+      
+      .slider-card-title {
+        margin-top: 15px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $primary-color;
+      }
+      
+      .slider-card-description {
+        color: $secondary-color;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    // Custom styling for navigation arrows
+    .slider-right-arrow, .slider-left-arrow {
+      background-color: $arrow-bg;
+      color: $primary-color;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.8;
+      transition: opacity 0.3s ease, background-color 0.3s ease;
+      
+      &:hover {
+        background-color: white;
+        cursor: pointer;
+        opacity: 1;
+      }
+    }
+  }
+}

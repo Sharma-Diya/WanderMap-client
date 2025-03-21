@@ -88,7 +88,7 @@ const UnsplashBackground = () => {
         backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "60vh",
+        height: "70vh",
         transition: "background-image 1s ease-in-out",
         display: "flex",
         justifyContent: "center",

@@ -34,3 +34,6 @@ const CitiesScroll = ({ cities, onCityClick }) => {
 };
 
 export default CitiesScroll;
+
+
+
