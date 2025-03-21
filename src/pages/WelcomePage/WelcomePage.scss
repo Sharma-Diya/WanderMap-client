@@ -36,7 +36,7 @@
         top: 20rem;
         left:3rem;
         bottom:0;
-        height: 200px;
+        height: 400px;
 
         &-top {
           font-size: 4rem;
@@ -63,7 +63,21 @@
             transform: none;
           }
         }
+        .banner__button {
+          display: inline-block; /* Allows you to control width and height */
+          padding: 12px 24px;
+          background-color: $alt-background-color; /* Example blue color */
+          color: $alt-text-color;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 1rem;
+          margin-top: 20px; /* Adjust spacing from the text above */
+          transition: background-color 0.3s ease;
+        }
       }
+        &__button:hover {
+          background-color: $btn_color; /* Darker blue on hover */
+        }
   }
 
   .welcome-bg {
@@ -77,6 +91,10 @@
 }
 .welcome-video{
   // width:100%;
+}
+.attractions{
+  background-color: $alt-background-color;
+  padding: 5rem;
 }
   
   .carousel .slide img {
@@ -93,16 +111,27 @@
   display: flex;
   align-items: center;  /* Vertically center the content */
   justify-content: space-between; /* Place content on opposite sides */
-  padding: 20px;
+  padding: 3rem 8rem;
 }
 
-.saying__image {
-  flex: 1;  /* Take up equal space as the text */
-  height: 60vh;
+// .saying-video {
+//   video {
+//     width: 400px;
+//     height: 700px;
+//   }
+// }
+
+.saying-video {
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
 
   video {
-    width: 100%;  /* Make sure the image fills the container */
-    height: auto;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 

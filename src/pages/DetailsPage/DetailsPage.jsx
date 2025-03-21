@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AttractionsCard from "../../Components/AttractionsCard/AttractionsCard";
 import "./DetailsPage.scss";
+import AttractionsList from "../../Components/AttractionsList/AttractionsList";
 
 function Details({ setPageName }) {
   const { id } = useParams(); // Get city ID from URL
@@ -28,7 +29,7 @@ function Details({ setPageName }) {
         setError(error); // Handle error if fetching fails
         setLoading(false);
       });
-  }, [id]);
+  }, [id, setPageName]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,6 +43,12 @@ function Details({ setPageName }) {
     return <div>City not found</div>;
   }
 
+  // Function to ensure proper image URL formatting
+  const getFullImageUrl = (imageUrl) => {
+    if (!imageUrl) return null;
+    return imageUrl.startsWith('http') ? imageUrl : `http://localhost:3000${imageUrl}`;
+  };
+
   return (
     <div className="details">
       <div className="city-details">
@@ -49,10 +56,10 @@ function Details({ setPageName }) {
         {/* Block: city-details */}
         <div className="">
           {/* Display the featured image if available */}
-          {city.images.length > 0 && (
+          {city.images && city.images.length > 0 && (
             <img
               className="city-details__image" // Element: image
-              src={city.images[0].url}
+              src={getFullImageUrl(city.images[0].url)}
               alt={city.images[0].alt_text}
             />
           )}
@@ -82,6 +89,7 @@ function Details({ setPageName }) {
               No attractions available for this city.
             </p>
           )}
+          {/* <AttractionsList cityId={id}/> */}
         </ul>
     </div>
   );

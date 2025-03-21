@@ -14,7 +14,7 @@ function Attractions({ setPageName }) {
 
   return (
     <div className="app">
-      <Navbar/>
+      {/* <Navbar/> */}
       <div className="itinerary">
         <Itinerary/>
       <div className="maps">
@@ -23,7 +23,7 @@ function Attractions({ setPageName }) {
       </APIProvider>
       </div>
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
