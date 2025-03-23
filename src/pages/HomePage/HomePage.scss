@@ -2,12 +2,11 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/fonts" as *;
-// @use "react-responsive-carousel/lib/styles/carousel.min.css" as *;
 
 .banner {
   color: white;
   font-family: "Outfit-Light", sans-serif;
-  position: relative; /* Ensures that child elements are positioned relative to this container */
+  position: relative; 
 
   &-bg {
     object-position: top;
