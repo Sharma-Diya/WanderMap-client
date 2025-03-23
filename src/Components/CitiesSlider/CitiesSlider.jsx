@@ -1,46 +1,41 @@
-import React from "react";
-import ReactCardSlider from "react-card-slider-component";
-import "./CitiesSlider.scss";
+import React from 'react';
+import './CitiesSlider.scss';
 
-function CitiesCardSlider({ cities, onCityClick }) {
-    const slides = cities.map(city => {
-        // Get the first image URL from the images array, or use a placeholder if no images
-        let imageUrl = "https://via.placeholder.com/300x200?text=No+Image";
-        
+function CitiesSlider({ cities, onCityClick }) {
+  
+  return (
+    <div className="cities-card-hover-container">
+      {cities.map((city) => {
+        // Get the first image URL or use a placeholder
+        let imageUrl = 'https://via.placeholder.com/300x200?text=No+Image';
         if (city.images && city.images.length > 0) {
-          // Make sure the URL is absolute by adding the base URL if it's not already included
-          imageUrl = city.images[0].url.startsWith('http') 
-            ? city.images[0].url 
+          imageUrl = city.images[0].url.startsWith('http')
+            ? city.images[0].url
             : `http://localhost:3000${city.images[0].url}`;
         }
-        
-        const altText = city.images && city.images.length > 0 
-          ? city.images[0].alt_text 
+
+        const altText = city.images && city.images.length > 0
+          ? city.images[0].alt_text
           : city.name;
-        
-        return {
-          image: imageUrl,
-          title: city.name,
-          description: city.province,
-          clickEvent: () => onCityClick(city.id),
-          id: city.id,
-          fullDescription: city.description,
-          imageAlt: altText
-        };
-      });
-  return (
-    <div className="cities-card-slider-container">
-      <ReactCardSlider 
-        slides={slides}
-        sliderWidth={100}            // percentage of container width
-        useGPURender={true}          // for better performance
-        offset={2}                   // spacing between cards
-        showArrows={true}            // show navigation arrows
-        autoSlide={true}             // automatic sliding
-        autoSlideTime={1000}         // time in ms between slides
-      />
+
+        return (
+          <div key={city.id} className="city-card" onClick={() => onCityClick(city.id)}>
+            <div className="city-card-inner">
+              <div className="city-card-front">
+                <img src={imageUrl} alt={altText} />
+              </div>
+              <div className="city-card-back">
+                <div className="card-info">
+                  <h3>{city.name}</h3>
+                  <p>{city.province}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-export default CitiesCardSlider;
+export default CitiesSlider;

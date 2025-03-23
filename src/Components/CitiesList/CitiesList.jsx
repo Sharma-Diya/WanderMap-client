@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import CitiesScroll from "../CitiesScroll/CitiesScroll";
-import Search from "../Search/Search";  // Import Search
+import Search from "../Search/Search"; // Import Search
 import "./CitiesList.scss";
 import CitiesCardSlider from "../CitiesSlider/CitiesSlider";
 
@@ -22,7 +21,7 @@ function CitiesList() {
       })
       .then((data) => {
         setCities(data);
-        setFilteredCities(data);  // Initially, set filtered cities to all cities
+        setFilteredCities(data); // Initially, set filtered cities to all cities
         setLoading(false);
       })
       .catch((error) => {
@@ -48,11 +47,14 @@ function CitiesList() {
     <div className="cities">
       <h3 className="cities-heading">Popular Cities</h3>
       <Search
-  cities={cities}
-  setFilteredResults={(data) => setFilteredCities(data.cities)} // 🔹 Ensure this function is passed
-/>
+        cities={cities}
+        setFilteredResults={(data) => setFilteredCities(data.cities)} // 🔹 Ensure this function is passed
+      />
       <div className="cities-list">
-        <CitiesCardSlider cities={filteredCities} onCityClick={handleCityClick} />
+        <CitiesCardSlider
+          cities={filteredCities}
+          onCityClick={handleCityClick}
+        />
       </div>
     </div>
   );
