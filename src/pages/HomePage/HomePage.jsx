@@ -4,7 +4,7 @@ import img1 from "../../assets/images/image1.jpg";
 // import img3 from "../../assets/images/3.jpg";
 import img from "../../assets/images/road.jpg";
 import video from "../../assets/images/video.mp4";
-
+import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 import "./HomePage.scss";
 // import Navbar from "../../Components/Navbar/Navbar";
@@ -14,7 +14,7 @@ import CitiesList from "../../Components/CitiesList/CitiesList.jsx";
 // import UnsplashImages from "../../Components/UnsplashImages/UnsplashImages.jsx";
 import AttractionsList from "../../Components/AttractionsList/AttractionsList.jsx";
 
-function Welcome({ setPageName, cities, attractions }) {
+function Welcome({ setPageName, cities, attractions, cityId}) {
   const [filteredCities, setFilteredCities] = useState(cities);
 
   useEffect(() => {
@@ -39,9 +39,9 @@ function Welcome({ setPageName, cities, attractions }) {
           unforgettable adventures. Pack your bags and get ready for an
           experience of a lifetime!
         </h3>
-        <a href="/cities/:id/attractions" className="banner__button">
-          Start Your Journey
-        </a>
+        <Link to={`/cities/${cityId}/attractions`} className="banner__button">
+      Start Your Journey
+    </Link>
       </div>
 
       <main className="main-content">

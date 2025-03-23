@@ -3,7 +3,7 @@
     align-items: flex-start; /* Align items to the top */
     padding-left: 50px; /* Adjust left padding for spacing */
     // margin-bottom: 15px; /* Adjust vertical spacing */
-    position: relative;
+    // position: relative;
   
     &::before {
       content: '';
@@ -19,7 +19,7 @@
   
     &::after {
       content: '';
-      position: absolute;
+      // position: absolute;
       left: 22px; /* Adjust horizontal position of the line */
       top: 0; /* Start position of the line (below the circle) */
       bottom: -8px; /* Extend the line to the next item */

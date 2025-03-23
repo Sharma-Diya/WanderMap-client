@@ -8,7 +8,7 @@ function ItineraryPage({setPageName}) {
 
    useEffect(() => {
       setPageName("Itinerary");
-    }, []);
+    }, [setPageName]);
 
   const handleItineraryUpdate = useCallback((items) => {
     console.log("ItineraryPage received itinerary update:", items ? items.length : 0, "items");

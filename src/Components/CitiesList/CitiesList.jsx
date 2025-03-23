@@ -46,10 +46,10 @@ function CitiesList() {
   return (
     <div className="cities">
       <h3 className="cities-heading">Popular Cities</h3>
-      <Search
+      {/* <Search
         cities={cities}
         setFilteredResults={(data) => setFilteredCities(data.cities)} // 🔹 Ensure this function is passed
-      />
+      /> */}
       <div className="cities-list">
         <CitiesCardSlider
           cities={filteredCities}

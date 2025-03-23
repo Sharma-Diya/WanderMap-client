@@ -5,114 +5,103 @@
 // @use "react-responsive-carousel/lib/styles/carousel.min.css" as *;
 
 .banner {
-    color: white;
-    font-family: "Outfit-Light", sans-serif;
-    position: relative; /* Ensures that child elements are positioned relative to this container */
-      
-    &-bg {
-      object-position: top;
-      width: 100%;
-      height: 50vh;
-      object-fit: cover;
+  color: white;
+  font-family: "Outfit-Light", sans-serif;
+  position: relative; /* Ensures that child elements are positioned relative to this container */
 
-      @include desktop{
+  &-bg {
+    object-position: top;
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    @include tablet {
       height: 80vh;
-      }
-  }
-    
-    &-logo {
-      position: absolute;
-      left: 38rem;
-      top: -13rem;
-      height: 50rem;
-      width: 40rem;
-      z-index: 2; /* Keep logo above the overlay */
     }
-      &-carousel .img{
-          width: 100%;
-          height: auto; 
-          object-fit: cover;
-          display: block; 
-        }
-      
-    
-   
-
-    &__heading {
-        position: absolute;
-        z-index: 2; 
-        text-align: left;
-        top: 20rem;
-        left:8rem;
-        bottom:0;
-        height: 400px;
-        padding-bottom: 2rem;
-
-        &-top {
-          font-size: 4rem;
-          font-weight: bold;
-        animation: slide-down 2s forwards;
-        
-
-        }
-      
-        &-bottom {
-          font-size: 1.5rem;
-          margin-top: 1rem;
-          width: 50%;
-          animation: slide-down 3.2s forwards;
-
-        }
-        @keyframes slide-down {
-          from {
-            opacity: 0;
-            transform: translateY(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: none;
-          }
-        }
-        .banner__button {
-          display: inline-block; /* Allows you to control width and height */
-          padding: 12px 24px;
-          background-color: $alt-background-color; /* Example blue color */
-          color: $alt-text-color;
-          text-decoration: none;
-          border-radius: 5px;
-          font-size: 1rem;
-          margin-top: 20px; /* Adjust spacing from the text above */
-          transition: background-color 0.3s ease;
-        }
-      }
-        &__button:hover {
-          background-color: $btn_color; /* Darker blue on hover */
-        }
   }
-.cities-list__container{
+
+  &-logo {
+    position: absolute;
+    left: 38rem;
+    top: -13rem;
+    height: 50rem;
+    width: 40rem;
+    z-index: 2; /* Keep logo above the overlay */
+  }
+  &-carousel .img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__heading {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    top: 20rem;
+    left: 8rem;
+    bottom: 0;
+    height: 400px;
+    padding-bottom: 2rem;
+
+    &-top {
+      font-size: 4rem;
+      font-weight: bold;
+      animation: slide-down 2s forwards;
+    }
+
+    &-bottom {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      width: 50%;
+      animation: slide-down 3.2s forwards;
+    }
+    @keyframes slide-down {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .banner__button {
+      display: inline-block; /* Allows you to control width and height */
+      padding: 12px 24px;
+      background-color: $alt-background-color; /* Example blue color */
+      color: $alt-text-color;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-top: 20px; /* Adjust spacing from the text above */
+      transition: background-color 0.3s ease;
+    }
+  }
+  &__button:hover {
+    background-color: $btn_color; /* Darker blue on hover */
+  }
+}
+.cities-list__container {
   z-index: 1;
 }
-.welcome-video{
+.welcome-video {
   // width:100%;
 }
-.attractions{
+.attractions {
   background-color: $alt-background-color;
   padding: 5rem;
 }
-  
-  .carousel .slide img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Ensure the image covers the entire slide without stretching */
-  }
-  
-  
-  
-  
-  
+
+.carousel .slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure the image covers the entire slide without stretching */
+}
+
 .saying {
   display: flex;
-  align-items: center;  /* Vertically center the content */
+  align-items: center; /* Vertically center the content */
   justify-content: space-between; /* Place content on opposite sides */
   padding: 3rem 8rem;
 }
@@ -139,7 +128,7 @@
 }
 
 .saying__text {
-  flex: 1;  /* Take up equal space as the image */
+  flex: 1; /* Take up equal space as the image */
   text-align: right; /* Align text to the right */
   font-size: 1.2rem;
   font-style: italic;

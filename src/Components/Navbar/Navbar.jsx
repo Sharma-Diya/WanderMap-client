@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 import Search from "../Search/Search.jsx";
-import LoginModal from "..//Auth/Login/LoginModal.jsx";
+import LoginModal from "../Auth/Login/LoginModal.jsx";
 // import Register from "../Auth/Register/Register.jsx";
 import { auth } from "../config/Firebase.jsx";  // Import Firebase auth
 import { onAuthStateChanged, signOut } from "firebase/auth"; // Import auth functions
@@ -61,7 +61,7 @@ function Navbar({ cities, setFilteredCities }) {
 
         <nav className={`header__content__nav ${menuOpen ? "isMenu" : ""}`}>
           <ul>
-            <Search cities={cities} setFilteredCities={setFilteredCities} />
+            {/* <Search cities={cities} setFilteredCities={setFilteredCities} /> */}
 
             <li>
               <Link to="/">Home</Link>
