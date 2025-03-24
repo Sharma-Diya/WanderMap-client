@@ -1,6 +1,7 @@
 import "./CustomMap.scss";
 import React, { useEffect, useState } from "react";
-import { APIProvider, Map, AdvancedMarker } from "@vis.gl/react-google-maps";
+import { APIProvider, Map, AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
+import Car from "../../assets/images/car.png";
 
 const CustomMap = ({ itineraryItems = [] }) => {
   const defaultCenter = {
@@ -30,18 +31,36 @@ const CustomMap = ({ itineraryItems = [] }) => {
     }
   }, [itineraryItems]);
 
+  const mapOptions = {
+    disableDefaultUI: true,
+    clickableIcons: true,
+    gestureHandling: 'auto',
+    zoomControl: true,
+    keyboardShortcuts: false
+  };
+
+  const handleCameraChange = (camera) => {
+    setMapCenter(camera.center);
+    setZoom(camera.zoom);
+  };
+
   return (
     <div className="map-container">
       <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <Map
           defaultCenter={defaultCenter}
+          defaultZoom={12}
           center={mapCenter}
           zoom={zoom}
           mapId={import.meta.env.VITE_MAP_ID}
           style={{ width: "100%", height: "400px" }}
+          options={mapOptions}
+          onCameraChanged={handleCameraChange}
         >
           {(!itineraryItems || itineraryItems.length === 0) && (
-            <AdvancedMarker position={defaultCenter} />
+            <AdvancedMarker position={defaultCenter}>
+              <Pin background={'#FBBC04'} glyphColor={'#000'} />
+            </AdvancedMarker>
           )}
 
           {itineraryItems &&
@@ -59,7 +78,16 @@ const CustomMap = ({ itineraryItems = [] }) => {
                   key={index}
                   position={position}
                   title={item.activity}
-                />
+                >
+                  <div style={{ 
+                    width: '40px', 
+                    height: '40px', 
+                    backgroundImage: `url(${Car})`, 
+                    backgroundSize: 'contain', 
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center'
+                  }} />
+                </AdvancedMarker>
               );
             })}
         </Map>
