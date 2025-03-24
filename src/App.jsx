@@ -8,7 +8,7 @@ import ItineraryPage from "./pages/ItineraryPage/ItineraryPage.jsx";
 import Details from "./pages/DetailsPage/DetailsPage.jsx";
 import Register from "./components/Auth/Register/Register.jsx";
 import Login from "./pages/LoginPage/LoginPage.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
+import Navbar from "./Components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 
 function App() {

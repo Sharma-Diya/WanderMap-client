@@ -14,7 +14,6 @@ const Itinerary = ({ onItineraryUpdate }) => {
   const [cities, setCities] = useState([]);
   const [seasons] = useState(["Summer", "Winter"]);
 
-  // Memoize the update function to prevent it from changing on every render
   const updateParent = useCallback(
     (items) => {
       if (typeof onItineraryUpdate === "function") {
@@ -24,7 +23,6 @@ const Itinerary = ({ onItineraryUpdate }) => {
     [onItineraryUpdate]
   );
 
-  // Fetch cities from the database
   useEffect(() => {
     const fetchCities = async () => {
       try {
@@ -41,11 +39,9 @@ const Itinerary = ({ onItineraryUpdate }) => {
     fetchCities();
   }, []);
 
-  // Fetch itinerary based on selected city and season
   useEffect(() => {
-    // Only proceed if we have both a city and season selected
     if (!selectedCityId || !selectedSeason) {
-      setItinerary(null); // Clear itinerary if either is missing
+      setItinerary(null);
       updateParent([]);
       return;
     }
@@ -73,7 +69,6 @@ const Itinerary = ({ onItineraryUpdate }) => {
             order: item.order || 0,
           }));
 
-          // Sort by order if available
           items.sort((a, b) => a.order - b.order);
 
           setItinerary({
@@ -81,7 +76,6 @@ const Itinerary = ({ onItineraryUpdate }) => {
             items,
           });
 
-          // Update parent with items
           updateParent(items);
         } else {
           throw new Error("Invalid itinerary structure");
@@ -89,7 +83,6 @@ const Itinerary = ({ onItineraryUpdate }) => {
       } catch (error) {
         console.error("Error fetching itinerary:", error);
         setError(error.message);
-        // Clear itinerary on error
         setItinerary(null);
         updateParent([]);
       } finally {
