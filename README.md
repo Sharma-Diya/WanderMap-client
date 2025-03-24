@@ -1,4 +1,4 @@
-# WanderMap-client
+# WanderMap-api
 # Project Title
 WanderMap 
 
@@ -152,24 +152,18 @@ Cities Endpoints
    * Get details for specific city
 
 Attractions Endpoints
-
-1. **GET /api/cities/:cityId/attractions**
+1. **GET /api/attractions**
+2. **GET /api/cities/:cityId/attractions**
    * Get attractions for specific city
    * Parameters: limit, page, category
 
-2. **GET /api/attractions/:id**
-   * Get details for specific attraction
-
 Itinerary Endpoints
 
-1. **GET /api/itinerary**
-   * Get current user's saved attractions
-   * Authentication: Required
+1. **GET /api/itineraryies**
+2. **GET/api/itienraries/{city_id}/season(summer/winter)**
 
-2. **POST /api/itinerary**
-   * Save attraction to user's itinerary
-   * Authentication: Required
-   * Request Body: attraction ID, visit date, notes
+Images Endpoints
+1. **GET /api/images**
 
 ## Roadmap
 - Create client
