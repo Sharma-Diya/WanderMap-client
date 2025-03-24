@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./ItineraryItem.scss";
 const ItineraryItem = ({ time, activity, description }) => {
   return (
     <div className="itinerary-item">
