@@ -1,61 +1,51 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+
 .itinerary-item {
+  background: #fcfffe;
   display: flex;
   align-items: flex-start;
-  padding-left: 50px;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 14px;
-    top: 8px;
-    width: 20px;
-    height: 20px;
-    background-color: #FFA500;
-    border-radius: 50%;
-    border: none;
-  }
-
-  &::after {
-    content: '';
-    left: 22px;
-    top: 0;
-    bottom: -8px;
-    width: 2px;
-    background-color: #FFA500;
-    z-index: -1;
-  }
-
-  &:last-child::after {
-    height: 0;
-    opacity: 0;
+  &:last-child {
+    border-bottom: none;
   }
 
   .item-time {
     font-weight: bold;
-    width: 80px;
+    width: 5rem;
     text-align: right;
-    margin-right: 20px;
+    margin-right: 1.25rem;
     color: #333;
+    font-size: 0.9em;
+    padding-top: 0.125rem; 
   }
 
   .item-details {
     flex-grow: 1;
+    width:6.25rem;
+    padding-top: 0rem; 
   }
 
   .item-activity {
-    font-size: 1.1em;
-    margin-bottom: 3px;
+    font-size: 1em;
+    margin-bottom: 0.125rem;
     color: #333;
+    font-weight: 500;
   }
 
   .item-description {
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: #666;
-    margin-bottom: 5px;
+    margin-bottom: 0.1875rem;
+    line-height: 1.4;
   }
 
   .item-distance {
-    font-size: 0.8em;
+    font-size: 0.75em;
     color: #777;
+    line-height: 1;
   }
 }
