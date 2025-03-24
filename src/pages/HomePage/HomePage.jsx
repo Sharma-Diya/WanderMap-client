@@ -8,10 +8,6 @@ import AttractionsList from "../../components/AttractionsList/AttractionsList.js
 
 function HomePage({ cities, attractions, cityId }) {
 
-  useEffect(() => {
-    console.log("Cities data:", cities);
-  }, [cities]);
-
   return (
     <>
       <section className="banner">

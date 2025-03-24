@@ -11,7 +11,6 @@ function ItineraryPage({ setPageName }) {
   }, [setPageName]);
 
   const handleItineraryUpdate = useCallback((items) => {
-    console.log("ItineraryPage received itinerary update:", items ? items.length : 0, "items");
     setItineraryItems(items || []);
   }, []);
 

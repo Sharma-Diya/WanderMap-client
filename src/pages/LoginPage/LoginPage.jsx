@@ -19,9 +19,7 @@ const Login = ({ isModal = false, onClose }) => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("Signed in successfully");
 
-      // Close modal if `onClose` exists
       if (isModal && onClose) {
         onClose();
       } else {

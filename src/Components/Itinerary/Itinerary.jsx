@@ -1,25 +1,28 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import CitySelect from '../CitySelect/CitySelect';
-import SeasonSelect from '../SeasonSelect/SeasonSelect';
-import ItineraryItem from '../ItineraryItem/ItineraryItem';
-import './Itinerary.scss'; // Create this file for styling
+import React, { useState, useEffect, useCallback } from "react";
+import CitySelect from "../CitySelect/CitySelect";
+import SeasonSelect from "../SeasonSelect/SeasonSelect";
+import ItineraryItem from "../ItineraryItem/ItineraryItem";
+import "./Itinerary.scss"; // Create this file for styling
 
 const Itinerary = ({ onItineraryUpdate }) => {
   const [selectedCityId, setSelectedCityId] = useState(null);
-  const [selectedCityName, setSelectedCityName] = useState('');
+  const [selectedCityName, setSelectedCityName] = useState("");
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [itinerary, setItinerary] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [cities, setCities] = useState([]);
-  const [seasons] = useState(['Summer', 'Winter']);
+  const [seasons] = useState(["Summer", "Winter"]);
 
   // Memoize the update function to prevent it from changing on every render
-  const updateParent = useCallback((items) => {
-    if (typeof onItineraryUpdate === 'function') {
-      onItineraryUpdate(items);
-    }
-  }, [onItineraryUpdate]);
+  const updateParent = useCallback(
+    (items) => {
+      if (typeof onItineraryUpdate === "function") {
+        onItineraryUpdate(items);
+      }
+    },
+    [onItineraryUpdate]
+  );
 
   // Fetch cities from the database
   useEffect(() => {
@@ -53,13 +56,11 @@ const Itinerary = ({ onItineraryUpdate }) => {
 
       try {
         const apiUrl = `http://localhost:3000/api/itineraries/${selectedCityId}/${selectedSeason.toLowerCase()}`;
-        console.log("Fetching from:", apiUrl);
 
         const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error(`Failed to fetch itinerary: ${response.status}`);
+        if (!response.ok)
+          throw new Error(`Failed to fetch itinerary: ${response.status}`);
         const data = await response.json();
-
-        console.log("Received data:", data);
 
         if (Array.isArray(data)) {
           const items = data.map((item) => ({
@@ -69,7 +70,7 @@ const Itinerary = ({ onItineraryUpdate }) => {
             description: item.description,
             latitude: parseFloat(item.latitude),
             longitude: parseFloat(item.longitude),
-            order: item.order || 0
+            order: item.order || 0,
           }));
 
           // Sort by order if available
@@ -77,7 +78,7 @@ const Itinerary = ({ onItineraryUpdate }) => {
 
           setItinerary({
             name: selectedCityName,
-            items
+            items,
           });
 
           // Update parent with items
@@ -102,7 +103,7 @@ const Itinerary = ({ onItineraryUpdate }) => {
   const handleCityChange = (e) => {
     const cityId = e.target.value;
     const cityObj = cities.find((city) => city.id === parseInt(cityId));
-    const cityName = cityObj ? cityObj.name : '';
+    const cityName = cityObj ? cityObj.name : "";
 
     setSelectedCityId(cityId);
     setSelectedCityName(cityName);
@@ -132,12 +133,16 @@ const Itinerary = ({ onItineraryUpdate }) => {
       </div>
 
       <div className="itinerary-content">
-        {loading && <div className="status-message loading">Loading itinerary...</div>}
+        {loading && (
+          <div className="status-message loading">Loading itinerary...</div>
+        )}
         {error && <div className="status-message error">Error: {error}</div>}
 
         {itinerary && itinerary.items && itinerary.items.length > 0 ? (
           <div className="itinerary-container">
-            <h3 className="itinerary-title">{selectedCityName} - {selectedSeason} Itinerary</h3>
+            <h3 className="itinerary-title">
+              {selectedCityName} - {selectedSeason} Itinerary
+            </h3>
             {itinerary.items.map((item) => (
               <ItineraryItem key={item.id} {...item} />
             ))}
@@ -147,12 +152,14 @@ const Itinerary = ({ onItineraryUpdate }) => {
               <button className="action-button primary">Save Plan</button>
             </div>
           </div>
-        ) : !loading && (
-          <div className="status-message empty">
-            {selectedCityId && selectedSeason 
-              ? "No itinerary available for this selection." 
-              : "Please select a city and season to view the itinerary."}
-          </div>
+        ) : (
+          !loading && (
+            <div className="status-message empty">
+              {selectedCityId && selectedSeason
+                ? "No itinerary available for this selection."
+                : "Please select a city and season to view the itinerary."}
+            </div>
+          )
         )}
       </div>
     </div>
