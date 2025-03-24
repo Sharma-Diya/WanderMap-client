@@ -1,0 +1,6 @@
+.env
+node_modules
+src/Components/config/Firebase.jsx
+.DS_Store
+
+Firebase.jsx

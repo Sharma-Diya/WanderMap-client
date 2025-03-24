@@ -1,0 +1,49 @@
+.cities-card-hover-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(31.25rem, 1fr));
+  gap: 1.25rem;
+}
+
+.city-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  height:19rem;
+}
+
+.city-card:hover {
+  transform: scale(1.05);
+}
+
+.city-card img {
+  width: 100%;
+  height: 19rem;
+  object-fit: cover;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.625rem;
+  visibility: hidden;
+}
+
+.city-card:hover .card-info {
+  visibility: visible;
+}
+
+.card-info h3 {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.card-info p {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}

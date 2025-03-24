@@ -1,0 +1,67 @@
+@use "../../styles/partials/variables" as *;
+
+.details {
+
+  padding: 0 5rem;
+
+  .city-details {
+    margin: 2.8rem 0.625rem;
+    background-color: #F9F9F9;
+    border: 1px solid $card-border-color;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: left;
+
+    &__image {
+      width: 31.25rem;
+      height: auto;
+      margin-bottom: 0;
+      border-radius: 0.5rem;
+      object-fit: fill;
+      object-position: center;
+    }
+
+    &__info {
+      flex: 1;
+    }
+
+    &__name {
+      margin-top: 0;
+      margin-bottom: 0.625rem;
+      text-align: left;
+    }
+
+    &__description {
+      line-height: 1.6;
+      margin-bottom: 0.625rem;
+      text-align: left;
+    }
+
+    &__province {
+      text-align: left;
+    }
+  }
+
+  .attractions-section {
+
+    &__title {
+      margin-bottom: 0.9375rem;
+      text-align: left;
+      margin: 0.625rem 2.5rem;
+    }
+  }
+
+  .attractions-item {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    padding-bottom: 1rem;
+    justify-content: space-around;
+  }
+}

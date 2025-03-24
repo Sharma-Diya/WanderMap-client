@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/fonts" as *;
+
+.cities{
+    background-color: $alt-background-color ;
+    padding: 5rem 8rem;
+    &-heading{
+        color: $alt-text-color;
+        padding-bottom: 2rem;
+        @include h1--desktop;
+    }
+}
