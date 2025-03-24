@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import ReactCardSlider from "react-card-slider-component";
-// const ReactCardSlider = require('react-card-slider-component');
-// import * as ReactCardSlider from 'react-card-slider-component';
-import AttractionsCard from "../AttractionsCard/AttractionsCard";// Card component
-import "./AttractionsList.scss"; // Styles
+import AttractionsCard from "../AttractionsCard/AttractionsCard"; 
+import "./AttractionsList.scss"; 
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL|| "http://localhost:8000";
 
 function AttractionsList({ cityId, viewType = "grid" }) {
   const [attractions, setAttractions] = useState([]);
@@ -15,14 +15,15 @@ function AttractionsList({ cityId, viewType = "grid" }) {
     const fetchAttractions = async () => {
       try {
         const url = cityId 
-          ? `http://localhost:3000/api/cities/${cityId}/attractions` 
-          : "http://localhost:3000/api/attractions";
-          
+          ? `${BACKEND_URL}/api/cities/${cityId}/attractions` 
+          : `${BACKEND_URL}/api/attractions`;
+        
         const response = await Axios.get(url);
         setAttractions(response.data || []);
-        setLoading(false);
       } catch (err) {
-        setError("Failed to fetch attractions");
+        console.error("Error fetching attractions:", err.response?.data || err.message);
+        setError("Failed to fetch attractions. Please try again later.");
+      } finally {
         setLoading(false);
       }
     };
@@ -31,15 +32,12 @@ function AttractionsList({ cityId, viewType = "grid" }) {
   }, [cityId]);
 
   const getFullImageUrl = (imageUrl) => {
-    if (!imageUrl) return null;
-    return imageUrl.startsWith("http") ? imageUrl : `http://localhost:3000${imageUrl}`;
+    if (!imageUrl) return "https://via.placeholder.com/300x200?text=No+Image";
+    return imageUrl.startsWith("http") ? imageUrl : `${BACKEND_URL}${imageUrl}`;
   };
 
-  // Format slides for slider
   const slides = attractions.map((attraction) => ({
-    image: attraction.images?.[0]?.url 
-      ? getFullImageUrl(attraction.images[0].url) 
-      : "https://via.placeholder.com/300x200?text=No+Image",
+    image: getFullImageUrl(attraction.images?.[0]?.url),
     title: attraction.name,
     description: attraction.category,
     clickEvent: () => alert(`Clicked on ${attraction.name}`),
@@ -52,7 +50,7 @@ function AttractionsList({ cityId, viewType = "grid" }) {
     <div className="attractions-container">
       <h2 className="attractions-heading">Explore the Local Gems</h2>
 
-      {viewType === "slider" ? (
+      {viewType === "slider" && slides.length > 0 ? (
         <ReactCardSlider 
           slides={slides}
           sliderWidth={100}
@@ -62,6 +60,8 @@ function AttractionsList({ cityId, viewType = "grid" }) {
           autoSlide={true}
           autoSlideTime={2000}
         />
+      ) : viewType === "slider" ? (
+        <p>No attractions available.</p>
       ) : (
         <div className="attractions-grid">
           {attractions.map((attraction) => (

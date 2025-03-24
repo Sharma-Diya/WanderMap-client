@@ -3,8 +3,7 @@ $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
 
 // $background color: #4682B4
-$background: #2E361ADE;
-// $alt-background-color:  #C4DC89;
+$background: hsla(77, 35%, 16%, 0.871);
 $icons-color: #1e6655;
 $border-color: #b7cec9;
 $alt-background-color: #e4efec;
@@ -12,15 +11,12 @@ $text-color: #effaf7;
 $alt-text-color: #555;
 $card-background-color: #D0E0E0;
 $card-border-color: #E0E0E0;
+$error-background:#fee2e2;
+$error-color:#b91c1c;
+
+// font-weight
+$semi-bold: 600;
+$regular: 400;
 
 // navbar 
 $btn_color: #E6E393;
-// $
-
-
-
-$arrow-size: 30px;
-$arrow-bg-color: rgba(0, 0, 0, 0.5);
-$arrow-bg-hover-color: rgba(0, 0, 0, 0.7);
-$arrow-padding: 10px;
-$slider-max-height: 600px;

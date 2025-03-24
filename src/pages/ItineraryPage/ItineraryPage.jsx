@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Itinerary from '../../Components/Itinerary/Itinerary';
-import CustomMap from '../../Components/CustomMap/CustomMap';
+import Itinerary from '../../components/Itinerary/Itinerary';
+import CustomMap from '../../components/CustomMap/CustomMap';
 import './ItineraryPage.scss';
 
-function ItineraryPage({setPageName}) {
+function ItineraryPage({ setPageName }) {
   const [itineraryItems, setItineraryItems] = useState([]);
 
-   useEffect(() => {
-      setPageName("Itinerary");
-    }, [setPageName]);
+  useEffect(() => {
+    setPageName("Itinerary");
+  }, [setPageName]);
 
   const handleItineraryUpdate = useCallback((items) => {
     console.log("ItineraryPage received itinerary update:", items ? items.length : 0, "items");
@@ -26,12 +26,16 @@ function ItineraryPage({setPageName}) {
           <h2 className="section-title">Map View</h2>
           <CustomMap itineraryItems={itineraryItems} />
           <div className="map-debug">
-            Points on map: {itineraryItems.length}
+            {itineraryItems.length > 0 ? (
+              <>There are {itineraryItems.length} points on the map.</>
+            ) : (
+              <>No points on the map yet.</>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default ItineraryPage;

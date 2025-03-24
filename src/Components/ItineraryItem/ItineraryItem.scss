@@ -1,66 +1,61 @@
 .itinerary-item {
-    display: flex;
-    align-items: flex-start; /* Align items to the top */
-    padding-left: 50px; /* Adjust left padding for spacing */
-    // margin-bottom: 15px; /* Adjust vertical spacing */
-    // position: relative;
-  
-    &::before {
-      content: '';
-      position: absolute;
-      left: 14px; /* Adjust horizontal position of the circle */
-      top: 8px; /* Adjust vertical position of the circle */
-      width: 20px; /* Size of the circle */
-      height: 20px; /* Size of the circle */
-      background-color: #FFA500; /* Orange circle */
-      border-radius: 50%;
-      border: none; /* Remove the border */
-    }
-  
-    &::after {
-      content: '';
-      // position: absolute;
-      left: 22px; /* Adjust horizontal position of the line */
-      top: 0; /* Start position of the line (below the circle) */
-      bottom: -8px; /* Extend the line to the next item */
-      width: 2px; /* Thickness of the line */
-      background-color: #FFA500; /* Orange line */
-      z-index: -1; /* Place the line behind the content */
-    }
-  
-    &:last-child::after {
-        height: 0;
-        opacity: 0;
-      }
-      
-  
-    .item-time {
-      font-weight: bold;
-      width: 80px; /* Adjust width for time display */
-      text-align: right;
-      margin-right: 20px;
-      color: #333; /* Darker text color for time */
-    }
-  
-    .item-details {
-      flex-grow: 1;
-    }
-  
-    .item-activity {
-      font-size: 1.1em;
-      margin-bottom: 3px;
-      color: #333; /* Darker text color for activity */
-    }
-  
-    .item-description {
-      font-size: 0.9em;
-      color: #666; /* Slightly darker description color */
-      margin-bottom: 5px; /* Add a little space below description */
-    }
-  
-    /* Style for optional distance/info */
-    .item-distance {
-      font-size: 0.8em;
-      color: #777;
-    }
+  display: flex;
+  align-items: flex-start;
+  padding-left: 50px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: #FFA500;
+    border-radius: 50%;
+    border: none;
   }
+
+  &::after {
+    content: '';
+    left: 22px;
+    top: 0;
+    bottom: -8px;
+    width: 2px;
+    background-color: #FFA500;
+    z-index: -1;
+  }
+
+  &:last-child::after {
+    height: 0;
+    opacity: 0;
+  }
+
+  .item-time {
+    font-weight: bold;
+    width: 80px;
+    text-align: right;
+    margin-right: 20px;
+    color: #333;
+  }
+
+  .item-details {
+    flex-grow: 1;
+  }
+
+  .item-activity {
+    font-size: 1.1em;
+    margin-bottom: 3px;
+    color: #333;
+  }
+
+  .item-description {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .item-distance {
+    font-size: 0.8em;
+    color: #777;
+  }
+}

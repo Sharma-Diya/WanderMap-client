@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import "./AttractionsCard.scss";
 
 function AttractionsCard({ attraction }) {
-  const { name, description, address, category, city_name, images } = attraction;
-  
+  const { name, category, images } = attraction;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL|| "http://localhost:8000";
+
 
   return (
     <div className="attraction-box">
-      {/* Check if images exists and has items before trying to access */}
       {images && images.length > 0 ? (
-       <img
-       className="attraction-box__image"
-       src={images[0].url.startsWith("http") ? images[0].url : `http://localhost:3000${images[0].url}`}
-       alt={images[0].alt_text || name}
-     />
-     
+        <img
+          className="attraction-box__image"
+          src={
+            images[0].url.startsWith("http")
+              ? images[0].url
+              : `${BACKEND_URL}${images[0].url}`
+          }
+          alt={images[0].alt_text || name}
+        />
       ) : (
         <div className="attraction-box__placeholder">No Image Available</div>
       )}

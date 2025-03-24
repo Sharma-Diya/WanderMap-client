@@ -6,7 +6,6 @@ function CitiesSlider({ cities, onCityClick }) {
   return (
     <div className="cities-card-hover-container">
       {cities.map((city) => {
-        // Get the first image URL or use a placeholder
         let imageUrl = 'https://via.placeholder.com/300x200?text=No+Image';
         if (city.images && city.images.length > 0) {
           imageUrl = city.images[0].url.startsWith('http')

@@ -1,56 +1,53 @@
 @use "../../styles/partials/variables" as *;
 
-  .attraction-box {
-    list-style: none;
-    padding-bottom: 1rem;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    background-color: #F9F9F9;
-    border: 1px solid $card-border-color;
-    color: $icons-color;
-    width: 400px;
-   height: 400px;
-   overflow: hidden;
-  
-    &:hover {
-      box-shadow: 0 4px 8px rgba(0,0,0, 0.1);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-  
-    &__name {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: $icons-color;
-      padding: 0 10px;
+.attraction-box {
+  list-style: none;
+  padding-bottom: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.9375rem;
+  background-color: #f9f9f9;
+  border: 0.0625rem solid $card-border-color;
+  color: $icons-color;
+  width: 25rem;
+  height: 25rem;
+  overflow: hidden;
 
-    }
-  
-    &__image {
-      width:400px;
-      height: 300px;
-      margin-bottom: 10px;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-    }
-  
-    &__description {
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-  
-    &__category {
-      font-style: italic;
-      color: $border-color;
-      margin-bottom: 5px;
-      padding: 0 10px;
-
-    }
-  
-    &__address {
-      color: #555;
-      font-size: 0.9rem;
-      padding:10px;
-
-    }
+  &:hover {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
+
+  &__name {
+    margin-top: 0;
+    margin-bottom: 0.625rem;
+    color: $alt-text-color;
+    padding: 0 0.625rem;
+  }
+
+  &__image {
+    width: 25rem;
+    height: 18.75rem;
+    margin-bottom: 0.625rem;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__description {
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  &__category {
+    font-style: italic;
+    color: $alt-text-color;
+    margin-bottom: 0.3125rem;
+    padding: 0 0.625rem;
+  }
+
+  &__address {
+    color: #555;
+    font-size: 0.9rem;
+    padding: 0.625rem;
+  }
+}

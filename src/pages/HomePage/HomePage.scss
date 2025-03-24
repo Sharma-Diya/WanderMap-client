@@ -6,7 +6,8 @@
 .banner {
   color: white;
   font-family: "Outfit-Light", sans-serif;
-  position: relative; 
+  position: relative;
+  height: 80vh;
 
   &-bg {
     object-position: top;
@@ -24,7 +25,7 @@
     top: -13rem;
     height: 50rem;
     width: 40rem;
-    z-index: 2; /* Keep logo above the overlay */
+    z-index: 2;
   }
   &-carousel .img {
     width: 100%;
@@ -52,6 +53,7 @@
     &-bottom {
       font-size: 1.5rem;
       margin-top: 1rem;
+      margin-bottom: 1.5rem;
       width: 50%;
       animation: slide-down 3.2s forwards;
     }
@@ -66,51 +68,29 @@
       }
     }
     .banner__button {
-      display: inline-block; /* Allows you to control width and height */
-      padding: 12px 24px;
-      background-color: $alt-background-color; /* Example blue color */
-      color: $alt-text-color;
       text-decoration: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      margin-top: 20px; /* Adjust spacing from the text above */
-      transition: background-color 0.3s ease;
+      @include h2--desktop;
+      @include btn;
     }
   }
   &__button:hover {
-    background-color: $btn_color; /* Darker blue on hover */
+    background-color: $btn_color;
   }
 }
 .cities-list__container {
   z-index: 1;
-}
-.welcome-video {
-  // width:100%;
 }
 .attractions {
   background-color: $alt-background-color;
   padding: 5rem;
 }
 
-.carousel .slide img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Ensure the image covers the entire slide without stretching */
-}
-
 .saying {
   display: flex;
-  align-items: center; /* Vertically center the content */
-  justify-content: space-between; /* Place content on opposite sides */
+  align-items: center;
+  justify-content: space-between;
   padding: 3rem 8rem;
 }
-
-// .saying-video {
-//   video {
-//     width: 400px;
-//     height: 700px;
-//   }
-// }
 
 .saying-video {
   width: 400px;
@@ -127,12 +107,12 @@
 }
 
 .saying__text {
-  flex: 1; /* Take up equal space as the image */
-  text-align: right; /* Align text to the right */
+  flex: 1;
+  text-align: right;
   font-size: 1.2rem;
   font-style: italic;
-  color: #555; /* Optional: change the color */
-  padding: 0 20px; /* Optional: add padding to the text */
+  color: #555;
+  padding: 0 20px;
 }
 
 blockquote {

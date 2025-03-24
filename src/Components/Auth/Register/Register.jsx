@@ -13,20 +13,37 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
     setError("");
+
+    if (!name || !email || !password || !confirmPassword) {
+      setError("All fields are required.");
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      setLoading(false);
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
+      setLoading(false);
       return;
     }
 
     if (!acceptTerms) {
       setError("You must accept the Terms and Conditions");
+      setLoading(false);
       return;
     }
 
@@ -39,8 +56,8 @@ function Register() {
         email: user.email,
       });
 
-      alert("User created successfully");
-      navigate("/"); // Redirect to Home or another page after successful registration
+      alert("User created successfully!");
+      setTimeout(() => navigate("/"), 800);
     } catch (error) {
       console.error("Registration error:", error.code, error.message);
 
@@ -53,6 +70,8 @@ function Register() {
       } else {
         setError("Failed to create account. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -132,7 +151,9 @@ function Register() {
             </label>
           </div>
 
-          <button type="submit" className="register-button">Register</button>
+          <button type="submit" className="register-button" disabled={loading}>
+            {loading ? "Registering..." : "Register"}
+          </button>
         </form>
 
         <p className="login-link">
