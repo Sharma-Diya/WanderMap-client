@@ -1,0 +1,61 @@
+.itinerary-item {
+  display: flex;
+  align-items: flex-start;
+  padding-left: 50px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: #FFA500;
+    border-radius: 50%;
+    border: none;
+  }
+
+  &::after {
+    content: '';
+    left: 22px;
+    top: 0;
+    bottom: -8px;
+    width: 2px;
+    background-color: #FFA500;
+    z-index: -1;
+  }
+
+  &:last-child::after {
+    height: 0;
+    opacity: 0;
+  }
+
+  .item-time {
+    font-weight: bold;
+    width: 80px;
+    text-align: right;
+    margin-right: 20px;
+    color: #333;
+  }
+
+  .item-details {
+    flex-grow: 1;
+  }
+
+  .item-activity {
+    font-size: 1.1em;
+    margin-bottom: 3px;
+    color: #333;
+  }
+
+  .item-description {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .item-distance {
+    font-size: 0.8em;
+    color: #777;
+  }
+}

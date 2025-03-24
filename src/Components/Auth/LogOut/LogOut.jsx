@@ -10,18 +10,15 @@ function LogoutButton({ className, onLogoutSuccess }) {
 
   const handleLogout = async () => {
     try {
-      // Sign out the user
       await signOut(auth);
       
-      // Clear the error message
       setError("");
+      alert("You have been logged out successfully.");
       
-      // Call the optional callback if provided
       if (onLogoutSuccess) {
         onLogoutSuccess();
       }
       
-      // Redirect to login page (unless specified not to in props)
       navigate("/");
     } catch (error) {
       console.error("Logout error:", error.message);

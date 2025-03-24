@@ -1,14 +1,27 @@
-
 @font-face {
-    font-family: "Outfit-Light";
-    src: url("../../assets/fonts/Outfit-Light.woff") format("woff"),
-         url("../../assets/fonts/Alternative Files/Outfit-Light.woff2") format("woff2");
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: "Outfit-Light";
-    src: url("../../assets/fonts/Outfit-Medium.woff") format("woff"),
-         url("../../assets/fonts/Alternative Files/Outfit-Medium.woff2") format("woff2");
+    font-family: "Nunito Sans";
+    src: url("../../assets/font/NunitoSans-Bold.woff") format("woff1"),
+      url("../../assets/font/alternative-fonts/NunitoSans-Bold.woff2")
+        format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    //     font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Nunito Sans";
+    src: url("../../assets/font/NunitoSans-Medium.woff") format("woff1"),
+      url("../../assets/font/alternative-fonts/NunitoSans-Medium.woff2")
+        format("woff2");
     font-weight: 500;
-}
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Nunito Sans";
+    src: url("../../assets/font/NunitoSans-Regular.woff") format("woff1"),
+      url("../../assets/font/alternative-fonts/NunitoSans-Regular.woff2")
+        format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }

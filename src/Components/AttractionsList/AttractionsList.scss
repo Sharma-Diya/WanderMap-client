@@ -3,42 +3,26 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/fonts" as *;
 
-.attractions-list{
-    background-color: $alt-background-color ;
-    color: black;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
 
-.attractions-cards{
-    display: flex;
-    align-items: center;
-    overflow-x: scroll ;
-    gap: 20px;
-    padding: 20px 0;
-    scroll-behavior: smooth;
-    padding: 1rem;
-}
-
-
-.scroll-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #1f97c2;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-  }
+.slider_card{
+  width:24.375rem;
   
-  .scroll-btn.left {
-    left: 0;
-  }
-  
-  .scroll-btn.right {
-    right: 0;
-  }
+}
+#main-slider-container{
+  color: black;
+  width:100%;
+}
+.attractions-slider-container {
+  text-align: center;
+  margin: 1.25rem auto;
+  width:100%;
+}
+.slider-card{
+  margin-left: 0;
+  margin-right: 0.625rem;
+}
+.attractions-heading{
+  color: $alt-text-color;
+  padding: 0 3rem 1.5rem 2.5rem;
+}
   

@@ -5,5 +5,10 @@
 
 .cities{
     background-color: $alt-background-color ;
-    color: black;
+    padding: 5rem 8rem;
+    &-heading{
+        color: $alt-text-color;
+        padding-bottom: 2rem;
+        @include h1--desktop;
+    }
 }

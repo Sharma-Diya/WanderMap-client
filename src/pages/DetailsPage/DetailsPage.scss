@@ -2,119 +2,66 @@
 
 .details {
 
-    padding:0 5rem;
+  padding: 0 5rem;
 
   .city-details {
-    margin: 45px;
-    // max-width: 800px;
-    // width: 90%;
-    background-color: white;
+    margin: 2.8rem 0.625rem;
+    background-color: #F9F9F9;
     border: 1px solid $card-border-color;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     padding: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     margin-top: 2rem;
-    display: flex; // Make city-details a flex container
-    flex-direction: row; // Arrange items in a row
-    align-items: center; // Vertically align items in the row
-    gap: 20px; // Add some space between the image and text
-    text-align: left; // Align text to the left within its container
-  
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: left;
+
     &__image {
-      max-width: 50%; // Take up half the width for the image
+      width: 31.25rem;
       height: auto;
-      margin-bottom: 0; // Remove bottom margin as it's now in a row
-      border-radius: 8px;
+      margin-bottom: 0;
+      border-radius: 0.5rem;
+      object-fit: fill;
+      object-position: center;
     }
-  
-    &__info { // Create a container for the text details
-      flex: 1; // Allow the text info to take up the remaining space
+
+    &__info {
+      flex: 1;
     }
 
     &__name {
-      margin-top: 0; // Reset top margin
-      margin-bottom: 10px;
-      text-align: left; // Ensure name is left-aligned
+      margin-top: 0;
+      margin-bottom: 0.625rem;
+      text-align: left;
     }
-  
+
     &__description {
       line-height: 1.6;
-      margin-bottom: 10px;
-      text-align: left; // Ensure description is left-aligned
-    }
-  
-    &__province {
-      text-align: left; // Ensure province is left-aligned
-    }
-  }
-  
-  .attractions-section {
-    // margin: 30px;
-    // padding: 1.5rem;
-    // width: 90%;
-    // max-width: 800px;
-  
-    &__title {
-      margin-bottom: 15px;
+      margin-bottom: 0.625rem;
       text-align: left;
-    margin: 10px 40px;
+    }
 
+    &__province {
+      text-align: left;
     }
   }
-  
+
+  .attractions-section {
+
+    &__title {
+      margin-bottom: 0.9375rem;
+      text-align: left;
+      margin: 0.625rem 2.5rem;
+    }
+  }
+
   .attractions-item {
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 50px;
     padding-bottom: 1rem;
     justify-content: space-around;
-  }
-  
-  .attraction-box {
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #F9F9F9;
-    border: 1px solid $card-border-color;
-    color: $icons-color;
-    width: 300px;
-    flex-shrink: 0;
-    justify-content: space-around;
-  
-    &:hover {
-      box-shadow: 0 4px 8px rgba(0,0,0, 0.1);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-  
-    &__name {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: $icons-color;
-    }
-  
-    &__image {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 10px;
-      border-radius: 4px;
-      display: block;
-    }
-  
-    &__description {
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-  
-    &__category {
-      font-style: italic;
-      color: $border-color;
-      margin-bottom: 5px;
-    }
-  
-    &__address {
-      color: #555;
-      font-size: 0.9rem;
-    }
   }
 }

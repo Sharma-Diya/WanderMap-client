@@ -1,54 +1,60 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CitiesScroll from "../CitiesScroll/CitiesScroll";
-import Search from "../Search/Search";  // Import Search
 import "./CitiesList.scss";
+import CitiesCardSlider from "../CitiesSlider/CitiesSlider";
 
 function CitiesList() {
   const [cities, setCities] = useState([]);
-  const [filteredCities, setFilteredCities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
   useEffect(() => {
-    fetch("http://localhost:3000/api/cities")
+    fetch(`${BACKEND_URL}/api/cities`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Failed to fetch cities. Please try again later.");
         }
         return response.json();
       })
       .then((data) => {
         setCities(data);
-        setFilteredCities(data);  // Initially, set filtered cities to all cities
         setLoading(false);
       })
       .catch((error) => {
-        setError(error);
+        setError(error.message);
         setLoading(false);
       });
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
   const handleCityClick = (cityId) => {
-    // Use the navigate function to navigate to the details page
     navigate(`/details/${cityId}`);
   };
 
+  if (loading) {
+    return (
+      <div className="loading">
+        <span>Loading Cities...</span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="error">
+        <p>Error: {error}</p>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="cities">
-      <h3 className="cities-heading">Popular Cities</h3>
-      <Search cities={cities} setFilteredCities={setFilteredCities} />
+      <h3 className="cities-heading">Cities We Love</h3>
       <div className="cities-list">
-        <CitiesScroll cities={filteredCities} onCityClick={handleCityClick} />
+        <CitiesCardSlider cities={cities} onCityClick={handleCityClick} />
       </div>
     </div>
   );

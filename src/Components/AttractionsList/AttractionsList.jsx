@@ -1,63 +1,76 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import AttractionsCard from "../AttractionsCard/AttractionsCard.jsx"; // Assuming you're importing AttractionsCard component
-import "./AttractionsList.scss";
+import ReactCardSlider from "react-card-slider-component";
+import AttractionsCard from "../AttractionsCard/AttractionsCard"; 
+import "./AttractionsList.scss"; 
 
-function AttractionsList() {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL|| "http://localhost:8000";
+
+function AttractionsList({ cityId, viewType = "grid" }) {
   const [attractions, setAttractions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch attractions data from API when component mounts
   useEffect(() => {
     const fetchAttractions = async () => {
       try {
-        const response = await Axios.get("http://localhost:3000/api/attractions");
-        setAttractions(response.data); // Set the fetched data to state
-        setLoading(false); // Set loading to false
+        const url = cityId 
+          ? `${BACKEND_URL}/api/cities/${cityId}/attractions` 
+          : `${BACKEND_URL}/api/attractions`;
+        
+        const response = await Axios.get(url);
+        setAttractions(response.data || []);
       } catch (err) {
-        setError("Failed to fetch attractions");
+        console.error("Error fetching attractions:", err.response?.data || err.message);
+        setError("Failed to fetch attractions. Please try again later.");
+      } finally {
         setLoading(false);
       }
     };
 
     fetchAttractions();
-  }, []);
+  }, [cityId]);
 
-  const scrollContainerRef = useRef(null);
-  
-    const scroll = (direction) => {
-      if (scrollContainerRef.current) {
-        const scrollAmount = 300; // Number of pixels to scroll
-        scrollContainerRef.current.scrollLeft += direction * scrollAmount;
-      }
-    };
+  const getFullImageUrl = (imageUrl) => {
+    if (!imageUrl) return "https://via.placeholder.com/300x200?text=No+Image";
+    return imageUrl.startsWith("http") ? imageUrl : `${BACKEND_URL}${imageUrl}`;
+  };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const slides = attractions.map((attraction) => ({
+    image: getFullImageUrl(attraction.images?.[0]?.url),
+    title: attraction.name,
+    description: attraction.category,
+    clickEvent: () => alert(`Clicked on ${attraction.name}`),
+  }));
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <div className="attractions-list">
-      <h2>Top Attractions</h2>
-      <button className="scroll-btn left" onClick={() => scroll(-1)}>
-        &lt;
-      </button>
-      <div className="attractions-cards">
-        {attractions.map((attraction) => (
-          <AttractionsCard key={attraction.id} attraction={attraction} />
-        ))}
-      </div>
-      <button className="scroll-btn right" onClick={() => scroll(1)}>
-        &gt;
-      </button>
+    <div className="attractions-container">
+      <h2 className="attractions-heading">Explore the Local Gems</h2>
+
+      {viewType === "slider" && slides.length > 0 ? (
+        <ReactCardSlider 
+          slides={slides}
+          sliderWidth={100}
+          useGPURender={true}
+          offset={2}
+          showArrows={true}
+          autoSlide={true}
+          autoSlideTime={2000}
+        />
+      ) : viewType === "slider" ? (
+        <p>No attractions available.</p>
+      ) : (
+        <div className="attractions-grid">
+          {attractions.map((attraction) => (
+            <AttractionsCard key={attraction.id} attraction={attraction} view="attractions" />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
 export default AttractionsList;
-

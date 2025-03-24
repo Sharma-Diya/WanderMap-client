@@ -16,14 +16,42 @@ function Footer() {
         </ul>
 
         <div className="footer__socials">
-          <a href="#" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-          <a href="#" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
-          <a href="#" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-          <a href="#" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          <a 
+            href="https://www.facebook.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            title="Follow us on Facebook"
+          >
+            <FaFacebookF />
+          </a>
+          <a 
+            href="https://twitter.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            title="Follow us on Twitter"
+          >
+            <FaTwitter />
+          </a>
+          <a 
+            href="https://www.instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            title="Follow us on Instagram"
+          >
+            <FaInstagram />
+          </a>
+          <a 
+            href="https://www.linkedin.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            title="Follow us on LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
         </div>
 
         <p className="footer__copy">
-        &copy; 2025 WanderMap. All rights reserved.
+          &copy; 2025 WanderMap. All rights reserved.
         </p>
       </div>
     </footer>

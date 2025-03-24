@@ -1,31 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { BiMenuAltRight } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import LoginModal from "../Auth/LoginModal/LoginModal.jsx";
+import { auth } from "../config/Firebase.jsx";  
+import { onAuthStateChanged, signOut } from "firebase/auth"; 
+import logo from "../../assets/images/final.png";
 import "./navbar.scss";
-import Search from "../Search/Search.jsx";
-import LoginModal from "..//Auth/Login/LoginModal.jsx";
-// import Register from "../Auth/Register/Register.jsx";
-import { auth } from "../config/Firebase.jsx";  // Import Firebase auth
-import { onAuthStateChanged, signOut } from "firebase/auth"; // Import auth functions
-import logo from "../../assets/images/logo.png";
 
-function Navbar({ cities, setFilteredCities }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+function Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [user, setUser] = useState(null); // Track logged-in user
+  const [user, setUser] = useState(null); 
 
   useEffect(() => {
-    // Listen for authentication state changes
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);  // Set user if logged in
-      } else {
-        setUser(null);  // Clear user if logged out
-      }
+      setUser(user || null);
     });
 
-    return () => unsubscribe(); // Cleanup listener on unmount
+    return () => unsubscribe();
   }, []);
 
   const openLoginModal = () => {
@@ -36,14 +26,9 @@ function Navbar({ cities, setFilteredCities }) {
     setIsLoginModalOpen(false);
   };
 
-  const menuToggleHandler = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("User logged out");
     } catch (error) {
       console.error("Logout error:", error.message);
     }
@@ -53,37 +38,28 @@ function Navbar({ cities, setFilteredCities }) {
     <header className="header">
       <div className="header__content">
         <div className="header__logo">
-        <Link to="/" className="header__content__logo">
-        <img src={logo} className="header__content__img"/>
-         <h1>WanderMap</h1> 
-        </Link>
+          <Link to="/" className="header__content__logo">
+            <img src={logo} className="header__content__img" alt="WanderMap logo" />
+            <h1 className="header-heading">WanderMap</h1>
+          </Link>
         </div>
 
-        <nav className={`header__content__nav ${menuOpen ? "isMenu" : ""}`}>
+        <nav className="header__content__nav">
           <ul>
-            <Search cities={cities} setFilteredCities={setFilteredCities} />
-
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/help">Help</Link>
+              <Link to="/cities/:id/attractions">Itinerary</Link>
             </li>
 
-            {/* Show login/register if user is not logged in */}
             {!user ? (
-              <>
-                <li>
-                  <button className="btn btn-login" onClick={openLoginModal}>
-                    Login
-                  </button>
-                </li>
-              </>
+              <li>
+                <button className="btn btn-login" onClick={openLoginModal}>
+                  Login
+                </button>
+              </li>
             ) : (
-              // Show Logout button when user is logged in
               <li>
                 <button className="btn btn-logout" onClick={handleLogout}>
                   Logout
@@ -92,16 +68,8 @@ function Navbar({ cities, setFilteredCities }) {
             )}
           </ul>
         </nav>
-        <div className="header__content__toggle">
-          {!menuOpen ? (
-            <BiMenuAltRight onClick={menuToggleHandler} />
-          ) : (
-            <AiOutlineClose onClick={menuToggleHandler} />
-          )}
-        </div>
       </div>
 
-      {/* Login and Register Modals */}
       <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </header>
   );
