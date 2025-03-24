@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoginModal from "../Auth/LoginModal/LoginModal.jsx";
-import { auth } from "../config/Firebase.jsx";  
+import { auth } from "../../components/config/Firebase.jsx";  
 import { onAuthStateChanged, signOut } from "firebase/auth"; 
 import logo from "../../assets/images/logo.png";
 import "./navbar.scss";
