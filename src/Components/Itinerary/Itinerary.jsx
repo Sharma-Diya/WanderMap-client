@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { db, auth } from "../../components/config/Firebase.jsx";
+import { collection, addDoc } from "firebase/firestore";
 import CitySelect from "../CitySelect/CitySelect";
 import SeasonSelect from "../SeasonSelect/SeasonSelect";
 import ItineraryItem from "../ItineraryItem/ItineraryItem";
-import "./Itinerary.scss"; // Create this file for styling
+import "./Itinerary.scss"; 
 
 const Itinerary = ({ onItineraryUpdate }) => {
   const [selectedCityId, setSelectedCityId] = useState(null);
@@ -106,6 +108,35 @@ const Itinerary = ({ onItineraryUpdate }) => {
     setSelectedSeason(e.target.value);
   };
 
+  const handleSaveItinerary = async () => {
+    if (!auth.currentUser) {
+      alert("You must be logged in to save an itinerary.");
+      return;
+    }
+  
+    if (!itinerary || !itinerary.items.length) {
+      alert("No itinerary to save.");
+      return;
+    }
+  
+    try {
+      const itineraryRef = collection(db, "itineraries"); 
+      await addDoc(itineraryRef, {
+        userId: auth.currentUser.uid,
+        city: selectedCityName,
+        season: selectedSeason,
+        items: itinerary.items,
+        createdAt: new Date(),
+      });
+  
+      alert("Itinerary saved successfully!");
+    } catch (error) {
+      console.error("Error saving itinerary:", error);
+      alert("Failed to save itinerary.");
+    }
+  };
+  
+
   return (
     <div className="itinerary-component">
       <h2 className="section-title">Plan Your Trip</h2>
@@ -115,13 +146,13 @@ const Itinerary = ({ onItineraryUpdate }) => {
           cities={cities}
           selectedCityId={selectedCityId}
           onCityChange={handleCityChange}
-          disabled={loading} // Disable during loading
+          disabled={loading} 
         />
         <SeasonSelect
           seasons={seasons}
           selectedSeason={selectedSeason}
           onSeasonChange={handleSeasonChange}
-          disabled={loading} // Disable during loading
+          disabled={loading} 
         />
       </div>
 
@@ -142,7 +173,7 @@ const Itinerary = ({ onItineraryUpdate }) => {
 
             <div className="button-container">
               <button className="action-button">Add Activity</button>
-              <button className="action-button primary">Save Plan</button>
+              <button className="action-button primary"  onClick={handleSaveItinerary}>Save Plan</button>
             </div>
           </div>
         ) : (
